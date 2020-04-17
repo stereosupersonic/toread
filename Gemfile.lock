@@ -182,6 +182,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (1.7.0)
     rexml (3.2.4)
+    rollbar (2.22.1)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.1)
@@ -282,6 +283,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
+  rollbar
   rspec-rails
   rubocop (~> 0.80.0)
   rubocop-performance
