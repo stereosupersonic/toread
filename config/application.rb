@@ -1,4 +1,6 @@
-require_relative 'boot'
+# frozen_string_literal: true
+
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -29,8 +31,18 @@ module Toread
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
     config.time_zone = "Berlin"
+    config.i18n.default_locale = :de
+
+    config.generators do |g|
+        g.template_engine :haml
+        g.test_framework :rspec,
+             fixtures: true,
+             view_specs: false,
+             helper_specs: false,
+             routing_specs: false,
+             controller_specs: false,
+             request_specs: true
+      end
   end
 end
