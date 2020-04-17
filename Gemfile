@@ -5,14 +5,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.3"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.0.2", ">= 6.0.2.2"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"
-# Use Puma as the app server
 gem "puma", "~> 4.1"
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 5.x"
+
+gem "webpacker", "~> 5.x" # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -32,6 +30,14 @@ group :development, :test do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "factory_bot_rails"
+end
+
+group :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "capybara"
+  gem "launchy" # for capybara save_and_open_page
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
 
 group :development do

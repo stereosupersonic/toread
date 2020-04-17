@@ -11,8 +11,6 @@
   %body{:class => "#{controller_name} #{action_name}"}
     %ul.nav.navbar-light.bg-light
       %a.navbar-brand{:href => root_path} Home
-      %li.nav-item
-        %a.nav-link{:href => "#"} Link
     .container
       .row
         - flash.each do |name, msg|
@@ -23,4 +21,3 @@
       .row
         .col
           = yield
-```
