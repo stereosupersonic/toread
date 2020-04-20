@@ -1,19 +1,23 @@
 %h1 Articles
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th{width: '35%'} Titel
-      %th{width: '50%'} Link
-      %th{width: '15%'}
-
-  %tbody
-    - @articles.each do |article|
+.table-responsive
+  %table.table.table-striped
+    %thead
       %tr
-        %td= article.title
-        %td= link_to article.link, article.link, target: "_blank"
-        %td   
-          = link_to "Show", article_path(article)
-          = link_to "Edit", edit_article_path(article)
+        %th Titel
+        %th Link
+        %th Description
+        %th Created
+        %th{width: '10%'}
+  
+    %tbody
+      - @articles.each do |article|
+        %tr
+          %td= link_to article.title, article.link, target: "_blank"
+          %td= link_to article.link, article.link, target: "_blank"
+          %td= truncate article.description
+          %td= format_datetime article.created_at
+          %td= show_button article_path(article)
 
-= link_to "new article", new_article_path
+  
+= add_button new_article_path

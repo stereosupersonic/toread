@@ -32,7 +32,6 @@ module Toread
     # the framework and any gems in your application.
 
     config.time_zone = "Berlin"
-    config.i18n.default_locale = :de
 
     config.generators do |g|
         g.template_engine :haml

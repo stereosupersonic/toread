@@ -1,0 +1,19 @@
+%h1 Articel
+%p
+  %b Title:
+  = @article.title
+
+%p
+  %b Link:
+  = link_to @article.link, @article.link, target: "_blank"
+
+%p
+  %b description:
+  %br
+  = @article.description
+
+= edit_button edit_article_path(@article)
+\|
+= delete_button article_path(@article)
+\|
+= back_button root_path

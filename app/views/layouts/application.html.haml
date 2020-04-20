@@ -9,15 +9,18 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body{:class => "#{controller_name} #{action_name}"}
+    // Navigtion
     %ul.nav.navbar-light.bg-light
       %a.navbar-brand{:href => root_path} Home
-    .container
+    
+    .container-fluid
       .row
-        - flash.each do |name, msg|
-          - if msg.is_a?(String)
-            %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-              %a.close{"data-dismiss" => "alert"} ×
-              = content_tag :div, msg, :id => "flash_#{name}"
+        .col
+          - flash.each do |name, msg|
+            - if msg.is_a?(String)
+              %div{:class => "alert alert-#{name.to_sym == :notice ? "success" : "error"}"}
+                %a.close{"data-dismiss" => "alert"} ×
+                = content_tag :div, msg, :id => "flash_#{name}"
       .row
         .col
           = yield

@@ -15,4 +15,6 @@
 
 
 class Article < ApplicationRecord
+
+  validates :link, presence: true
 end
