@@ -29,8 +29,10 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-nav"
   gem "rubocop", "~> 0.80.0"
+  gem "standard", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
   gem "factory_bot_rails"
 end
 

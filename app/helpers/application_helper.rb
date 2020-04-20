@@ -14,13 +14,13 @@ module ApplicationHelper
 
   # buttons
   def icon_tag(icon, options = {})
-    html_class = "fa fa-#{icon} " + options[:class].to_s
+    html_class = "fa fa-#{icon}" + options[:class].to_s
     content_tag(:i, "&nbsp;".html_safe, class: html_class) # rubocop:disable Rails/OutputSafety
   end
 
   def button_with_icon(link, text, icon, options = {})
     options.reverse_merge! class: "btn btn-default"
-    link_to icon_tag(icon) + text, link, options
+    link_to icon_tag(icon) + text.strip, link, options
   end
 
   def show_button(link, text = "Show", options = {})

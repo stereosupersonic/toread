@@ -2,6 +2,9 @@
 
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  def new
+    @article = Article.new
+  end
 
   def create
     @article = Article.new(article_params)
@@ -15,8 +18,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def new
-    @article = Article.new
+  def show
+  end
+
+  def edit
   end
 
   def update
