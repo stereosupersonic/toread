@@ -9,7 +9,8 @@ class BaseService
     new(args).call!
   end
 
-  def call; end
+  def call
+  end
 
   def call!
     validate!

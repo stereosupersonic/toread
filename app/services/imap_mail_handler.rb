@@ -8,12 +8,12 @@ class ImapMailHandler
   attr_accessor :logger
 
   def initialize(config = {})
-    @host           = Rails.application.credentials.mailbox[:host]
-    @user           = Rails.application.credentials.mailbox[:user]
-    @pw             = Rails.application.credentials.mailbox[:password]
+    @host = Rails.application.credentials.mailbox[:host]
+    @user = Rails.application.credentials.mailbox[:user]
+    @pw = Rails.application.credentials.mailbox[:password]
     @archive_folder = config[:archive_folder] # || "ARCHIVE"
-    @inbox          = "INBOX"
-    @logger         = config[:logger] # || Rails.logger
+    @inbox = "INBOX"
+    @logger = config[:logger] # || Rails.logger
   end
 
   # usage:
@@ -34,53 +34,54 @@ class ImapMailHandler
   end
 
   private
-    def find_mails(conditions, &block)
-      conditions = conditions.presence || ["ALL"]
-      login
-      log "search for mails with flags: #{conditions}"
-      mailbox.search(conditions).each do |message_id|
-        mail = fetch_mail message_id
-        log "mail found with message_id: '#{message_id}' subject: #{mail.subject.decoded}"
-        yield mail
-      end
-      logout
-    end
 
-    def fetch_mail(message_id)
-      Mail.new mailbox.fetch(message_id, "RFC822")[0].attr["RFC822"]
+  def find_mails(conditions, &block)
+    conditions = conditions.presence || ["ALL"]
+    login
+    log "search for mails with flags: #{conditions}"
+    mailbox.search(conditions).each do |message_id|
+      mail = fetch_mail message_id
+      log "mail found with message_id: '#{message_id}' subject: #{mail.subject.decoded}"
+      yield mail
     end
+    logout
+  end
 
-    def mailbox
-      @mailbox ||= if Rails.env.development?
-        Net::IMAP.new(@host, 993, true, nil, false)
-      else
-        Net::IMAP.new(@host)
-      end
-    end
+  def fetch_mail(message_id)
+    Mail.new mailbox.fetch(message_id, "RFC822")[0].attr["RFC822"]
+  end
 
-    def logout
-      log "close connection to mailserver"
-      mailbox.expunge
-      mailbox.logout
-      @mailbox = nil
+  def mailbox
+    @mailbox ||= if Rails.env.development?
+      Net::IMAP.new(@host, 993, true, nil, false)
+    else
+      Net::IMAP.new(@host)
     end
+  end
 
-    def login
-      log "login to mailserver '#{@host}' folder: '#{@inbox}' user: '#{@user}'"
-      mailbox.login(@user, @pw)
-      mailbox.select(@inbox)
-    end
+  def logout
+    log "close connection to mailserver"
+    mailbox.expunge
+    mailbox.logout
+    @mailbox = nil
+  end
 
-    def archive_mail(mail)
-      # create folder when not exists
-      message_id = mail.message_id
-      mailbox.create(@archive_folder) unless mailbox.list(@archive_folder, "%")
-      mailbox.copy(message_id, @archive_folder)
-      log "archive mail '#{message_id}' to '#{@archive_folder}'"
-      mailbox.store(message_id, "+FLAGS", [:Deleted])
-    end
+  def login
+    log "login to mailserver '#{@host}' folder: '#{@inbox}' user: '#{@user}'"
+    mailbox.login(@user, @pw)
+    mailbox.select(@inbox)
+  end
 
-    def log(msg)
-      @logger.debug msg if @logger
-    end
+  def archive_mail(mail)
+    # create folder when not exists
+    message_id = mail.message_id
+    mailbox.create(@archive_folder) unless mailbox.list(@archive_folder, "%")
+    mailbox.copy(message_id, @archive_folder)
+    log "archive mail '#{message_id}' to '#{@archive_folder}'"
+    mailbox.store(message_id, "+FLAGS", [:Deleted])
+  end
+
+  def log(msg)
+    @logger&.debug msg
+  end
 end

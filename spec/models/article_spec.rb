@@ -13,7 +13,6 @@
 #  updated_at  :datetime         not null
 #
 
-
 require "rails_helper"
 
 RSpec.describe Article, type: :model do

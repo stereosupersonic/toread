@@ -9,10 +9,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Article.create!(title: "My Cool Article",
-   link: "https://www.heise.de", description: "some blah")
+                link: "https://www.heise.de", description: "some blah")
 
 Article.create!(title: "Another Cool Article",
-  link: "https://www.stern.de",
-   description: "Enim quis mollit deserunt nisi reprehenderit aliquip. " \
+                link: "https://www.stern.de",
+                description: "Enim quis mollit deserunt nisi reprehenderit aliquip. " \
    "Labore mollit duis labore consectetur sunt mollit proident. Esse enim enim id nisi amet magna aliqua sit " \
    "consectetur irure adipisicing magna.")

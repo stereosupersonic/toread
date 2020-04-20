@@ -1,8 +1,7 @@
 class MailArticleCreator
-
-attr_accessor :mail
+  attr_accessor :mail
 
   def call
-     # mail
+    # mail
   end
 end
