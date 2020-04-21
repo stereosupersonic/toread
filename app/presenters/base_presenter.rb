@@ -2,7 +2,7 @@
 
 require "delegate"
 
-class ApplicationPresenter < SimpleDelegator
+class BasePresenter < SimpleDelegator
   alias object __getobj__
 
   def self.wrap(collection)
