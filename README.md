@@ -18,6 +18,13 @@
 
 ```
 
+
+## process all emails
+
+```
+bin/rake toread:mails:process
+```
+
 ## docker
 
 ### docker-compose

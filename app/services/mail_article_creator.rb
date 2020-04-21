@@ -2,7 +2,7 @@ class MailArticleCreator < BaseService
   attr_accessor :mail
 
   def call
-    Article.create link: extract_link, title: mail.subject
+    Article.create link: extract_link, title: mail.subject, created_at: mail.date
   end
 
   private
