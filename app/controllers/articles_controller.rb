@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @article.update(post_params)
+      if @article.update(article_params)
         format.html { redirect_to root_path, notice: "Articel was successfully updated." }
       else
         format.html { render :edit }

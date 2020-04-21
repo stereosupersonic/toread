@@ -9,7 +9,7 @@ RSpec.configure do |config|
   Capybara.default_max_wait_time = 10
   Capybara.default_normalize_ws = true # match DOM Elements with text spanning over multiple line
 
-  if ENV["USE_SELENIUM"].present?
+  if ENV["SELENIUM"].present?
     Capybara.register_driver :selenium do |app|
       Capybara::Selenium::Driver.new(app, browser: (ENV["SELENIUM_BROWSER"].presence || :chrome).to_sym)
     end
