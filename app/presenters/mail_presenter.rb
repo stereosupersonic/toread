@@ -6,6 +6,8 @@ class MailPresenter < BasePresenter
       default_body
     end
   end
+  
+  private 
 
   def default_body
     o.try(:body).to_s.encode("UTF-8", "binary", invalid: :replace, undef: :replace, replace: "")

@@ -2,7 +2,7 @@
 
 require "net/imap"
 require "net/http"
-require "mail"
+require "mail" # https://github.com/mikel/mail
 
 class ImapMailHandler
   attr_accessor :logger
