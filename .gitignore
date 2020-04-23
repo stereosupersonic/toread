@@ -20,7 +20,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/config/credentials/*
+/config/credentials/*.key
 
 # Ignore node and yarn
 /node_modules
