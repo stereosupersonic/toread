@@ -40,8 +40,8 @@ COPY package.json yarn.lock ./
 RUN yarn install --check-files
 
 COPY . ./
-
-RUN RAILS_ENV=production bin/rake assets:precompile --trace
+ARG RAILS_MASTER_KEY
+RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} RAILS_ENV=production bin/rake assets:precompile --trace
 
 EXPOSE 3000
 
