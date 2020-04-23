@@ -8,5 +8,5 @@
 set :output, "/var/log/cron.log"
 
 every 5.minutes do
-  rake "toread:mails:process"
+  command "bin/rake toread:mails:process"
 end
