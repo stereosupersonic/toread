@@ -11,7 +11,7 @@ class ImapMailHandler
     @host = Rails.application.credentials.mailbox[:host]
     @user = Rails.application.credentials.mailbox[:user]
     @pw = Rails.application.credentials.mailbox[:password]
-    @archive_folder = config[:archive_folder] # || "ARCHIVE"
+    @archive_folder = Rails.application.credentials.mailbox[:archive_folder]
     @inbox = "INBOX"
     @logger = config[:logger] # || Rails.logger
   end
