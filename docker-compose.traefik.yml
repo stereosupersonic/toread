@@ -12,7 +12,6 @@ services:
       - .env
     labels:
       - traefik.http.routers.dashboard.rule=Host(`toread.deimel.de`)
-      - traefik.http.services.dashboard.loadbalancer.server.port=${PORT}
 networks:
   web:
     external: true

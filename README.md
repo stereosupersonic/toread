@@ -63,6 +63,7 @@ DATABASE_HOST="192.168.1.69" # depend on your setup
 DATABASE_USERNAME=postgres
 DATABASE_PASSWORD=postgresdb
 DATABASE_NAME=toread_production
+```
 
 ### build image
 
