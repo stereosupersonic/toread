@@ -20,6 +20,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
 
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
   nodejs \
+  cron \
   yarn
 
 RUN gem update --system && \
