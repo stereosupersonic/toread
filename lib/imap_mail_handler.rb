@@ -27,9 +27,9 @@ class ImapMailHandler
   # mail.text_part.body.decoded
 
   def receive_and_archive_mail(search_params = ["NOT", "SEEN"], &block)
-    find_mails(search_params) do |mail|
+    find_mails(search_params) do |mail, message_id|
       yield mail if block_given?
-      archive_mail(mail) if @archive_folder.present?
+      archive_mail(message_id) if @archive_folder.present?
     end
   end
 
@@ -42,7 +42,7 @@ class ImapMailHandler
     mailbox.search(conditions).each do |message_id|
       mail = fetch_mail message_id
       log "mail found with message_id: '#{message_id}' subject: #{mail.subject}"
-      yield mail
+      yield mail, message_id
     end
     logout
   end
@@ -72,10 +72,10 @@ class ImapMailHandler
     mailbox.select(@inbox)
   end
 
-  def archive_mail(mail)
+  def archive_mail(message_id)
     # create folder when not exists
-    message_id = mail.message_id
     mailbox.create(@archive_folder) unless mailbox.list(@archive_folder, "%")
+    # todo error
     mailbox.copy(message_id, @archive_folder)
     log "archive mail '#{message_id}' to '#{@archive_folder}'"
     mailbox.store(message_id, "+FLAGS", [:Deleted])

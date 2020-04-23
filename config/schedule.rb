@@ -7,6 +7,8 @@
 #
 set :output, "/var/log/cron.log"
 
+ENV.each { |k, v| env(k, v) }
+
 every 5.minutes do
-  command "bin/rake toread:mails:process"
+  rake "internet_speed:run"
 end
