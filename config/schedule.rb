@@ -5,10 +5,10 @@
 #
 # https://github.com/javan/whenever
 #
-set :output, "/var/log/cron.log"
+#set :output, :standard
 
 ENV.each { |k, v| env(k, v) }
 
 every 5.minutes do
-  rake "internet_speed:run"
+  rake "toread:mails:process"
 end
