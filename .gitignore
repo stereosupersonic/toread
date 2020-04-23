@@ -7,12 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles and tempfiles!
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
 
 /public/assets
 /public/packs
@@ -21,8 +20,26 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials/*
 
+# Ignore node and yarn
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+capybara-*.html
+/coverage/
+/spec/tmp
+*.orig
+
+.env
+.env.*
+
+/.bundle
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+/public/uploads
+/public/system

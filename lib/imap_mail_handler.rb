@@ -2,7 +2,7 @@
 
 require "net/imap"
 require "net/http"
-require "mail"
+require "mail" # https://github.com/mikel/mail
 
 class ImapMailHandler
   attr_accessor :logger
@@ -41,7 +41,7 @@ class ImapMailHandler
     log "search for mails with flags: #{conditions}"
     mailbox.search(conditions).each do |message_id|
       mail = fetch_mail message_id
-      log "mail found with message_id: '#{message_id}' subject: #{mail.subject.decoded}"
+      log "mail found with message_id: '#{message_id}' subject: #{mail.subject}"
       yield mail
     end
     logout
