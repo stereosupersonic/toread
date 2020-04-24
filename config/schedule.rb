@@ -5,9 +5,9 @@
 #
 # https://github.com/javan/whenever
 #
-#set :output, :standard
+set :output, "/var/log/cron.log"
 
-ENV.each { |k, v| env(k, v) }
+ENV.each { |k, v| env(k, v) } # bug fix for https://stackoverflow.com/questions/31118033/could-not-find-rake-using-whenever-rails
 
 every 5.minutes do
   rake "toread:mails:process"
