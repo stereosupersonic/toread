@@ -52,16 +52,16 @@ git clone git@github.com:stereosupersonic/toread.git
 create a new file .env
 
 ```
-touch .env
+vim .env
 ```
 
 ```
 PORT=3001 # depend on the other containers
-RAILS_MASTER_KEY=XXX # from config config/master.key
+RAILS_MASTER_KEY=XXX # from config config/credentials/production.key
 
 DATABASE_HOST="192.168.1.69" # depend on your setup
 DATABASE_USERNAME=postgres
-DATABASE_PASSWORD=postgresdb
+DATABASE_PASSWORD=postgres_pw
 DATABASE_NAME=toread_production
 ```
 
@@ -77,4 +77,11 @@ docker-compose -f docker-compose.traefik.yml build
 
 ```
 docker-compose -f docker-compose.traefik.yml up -d
+```
+
+
+### logs
+
+```
+docker-compose -f docker-compose.traefik.yml logs -f
 ```
