@@ -56,10 +56,11 @@ vim .env
 ```
 
 ```
-PORT=3001 # depend on the other containers
-RAILS_MASTER_KEY=XXX # from config config/credentials/production.key
+PORT=3001
+RAILS_MASTER_KEY=XXX 
+# from config config/credentials/production.key
 
-DATABASE_HOST="192.168.1.69" # depend on your setup
+DATABASE_HOST="192.168.1.69"
 DATABASE_USERNAME=postgres
 DATABASE_PASSWORD=postgres_pw
 DATABASE_NAME=toread_production
