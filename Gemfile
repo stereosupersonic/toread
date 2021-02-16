@@ -8,7 +8,7 @@ ruby "2.6.3"
 gem "rails", "~> 6.0.2", ">= 6.0.2.2"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"
-gem "puma", "~> 4.1"
+gem "puma", "~> 4.3"
 
 gem "webpacker", "~> 5.x" # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
